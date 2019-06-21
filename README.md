@@ -9,5 +9,7 @@
 - USE_NAIVE_BAYES: Whether to use the Naive Bayes model or the Markov model of bigrams
 
 *To run the program from the console, type:*
+- "cd out/production/hw6-SemisupervisedLearning/" from the project folder
+*Folled by:*
 - "java SemisupervisedTomatoes < trainEMsemisup.txt" to print to the command line
 - "java SemisupervisedTomatoes < trainEMsemisup.txt > outputFilePath.txt" to print to a txt file
