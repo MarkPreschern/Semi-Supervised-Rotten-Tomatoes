@@ -1,6 +1,6 @@
 # Semi-Supervised-Rotten-Tomatoes
 
-**_ Applies the Expectation Maximization algorithm on semi-supervised Rotten Tomatoes data, classifying sentences as either positive or negative reviews _**
+**_Applies the Expectation Maximization algorithm on semi-supervised Rotten Tomatoes data, classifying sentences as either positive or negative reviews_**
 
 *To alter performance, change the following static variables*:
 - SEMISUPERVISED: Whether to consider the semi-supervised data in the file, or to do a completely unsupervised run
