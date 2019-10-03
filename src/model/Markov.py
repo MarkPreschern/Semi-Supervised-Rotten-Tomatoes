@@ -1,5 +1,5 @@
-from model import Model
-import WordProb
+from model import Model, WordProb
+import Sentence
 
 
 # A Markov model of bigrams
@@ -15,7 +15,7 @@ class Markov(Model.Model):
     # Update the model given a sentence and its probability of
     # belonging to each class
     def update(self, sentence, probs):
-        words = sentence.split(" ")
+        words = sentence.lemmas.split(" ")
 
         # updates class count and total words
         for i, p in enumerate(probs):
@@ -62,7 +62,7 @@ class Markov(Model.Model):
             pWords = 1
             # the previous word
             previousWord = None
-            for j, word in enumerate(sentence.split(" ")):
+            for j, word in enumerate(sentence.lemmas.split(" ")):
                 if j == 0:
                     if word in self.wordCounts[i]:
                         # Adds P(word | class) = wordCount / # of class words
@@ -100,7 +100,7 @@ class Markov(Model.Model):
             wordProbs = []
             for bigram in c.keys():
                 if self.bigramCounts[i].get(bigram) >= self.MIN_TO_PRINT:
-                    probs = self.classify(bigram)
+                    probs = self.classify(Sentence.Sentence(bigram, bigram))
                     wordProbs.append(WordProb.WordProb(bigram, bigram, probs[i]))
             wordProbs.sort(key=lambda x: x.prob, reverse=True)
             j = 0

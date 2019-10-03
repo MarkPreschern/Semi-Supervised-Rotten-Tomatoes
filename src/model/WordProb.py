@@ -8,3 +8,9 @@ class WordProb:
         self.word = w
         self.lemma = l
         self.prob = p
+
+    def __hash__(self):
+        return hash(self.word) * hash(self.lemma)
+
+    def __eq__(self, other):
+        return self.word == other.word and self.lemma == other.lemma

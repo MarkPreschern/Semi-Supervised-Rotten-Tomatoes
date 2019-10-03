@@ -1,5 +1,5 @@
-from model import Model
-import WordProb
+from model import Model, WordProb
+import Sentence
 
 
 # A Naive Bayes model
@@ -8,7 +8,7 @@ class NaiveBayes(Model.Model):
     # Update the model given a sentence and its probability of
     # belonging to each class
     def update(self, sentence, probs):
-        words = sentence.split(" ")
+        words = sentence.lemmas.split(" ")
 
         # updates class count and total words
         for i, p in enumerate(probs):
@@ -35,7 +35,7 @@ class NaiveBayes(Model.Model):
             pClass = self.classProbability(i)
             # calculates P(word | class) for all words in the sentence
             pWords = 1
-            for word in sentence.split(" "):
+            for word in sentence.lemmas.split(" "):
                 if word in self.wordCounts[i]:
                     # Adds P(word | class) = wordCount / # of class words
                     pWords *= self.wordCounts[i].get(word) / self.totalWords[i]
@@ -60,7 +60,7 @@ class NaiveBayes(Model.Model):
             wordProbs = []
             for word in c.keys():
                 if self.wordCounts[i].get(word) >= self.MIN_TO_PRINT:
-                    probs = self.classify(word)
+                    probs = self.classify(Sentence.Sentence(word, word))
                     wordProbs.append(WordProb.WordProb(word, word, probs[i]))
             wordProbs.sort(key=lambda x: x.prob, reverse=True)
             j = 0
