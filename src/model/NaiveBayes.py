@@ -61,7 +61,7 @@ class NaiveBayes(Model.Model):
             for word in c.keys():
                 if self.wordCounts[i].get(word) >= self.MIN_TO_PRINT:
                     probs = self.classify(Sentence.Sentence(word, word))
-                    wordProbs.append(WordProb.WordProb(word, word, probs[i]))
+                    wordProbs.append(WordProb.WordProb(word, probs[i]))
             wordProbs.sort(key=lambda x: x.prob, reverse=True)
             j = 0
             while j < n:

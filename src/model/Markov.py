@@ -101,7 +101,7 @@ class Markov(Model.Model):
             for bigram in c.keys():
                 if self.bigramCounts[i].get(bigram) >= self.MIN_TO_PRINT:
                     probs = self.classify(Sentence.Sentence(bigram, bigram))
-                    wordProbs.append(WordProb.WordProb(bigram, bigram, probs[i]))
+                    wordProbs.append(WordProb.WordProb(bigram, probs[i]))
             wordProbs.sort(key=lambda x: x.prob, reverse=True)
             j = 0
             while j < n:
