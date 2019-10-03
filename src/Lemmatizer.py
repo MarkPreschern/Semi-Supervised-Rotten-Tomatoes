@@ -40,6 +40,7 @@ class Lemmatizer:
             sentence = sentence.replace(stopCharacter, "")
         sentence = sentence.replace("  ", " ")  # removes extra whitespace
         sentence = sentence.strip() # removes trailing and leading whitespace
+        sentence = sentence.lower() # makes the sentence all lowercase
         return sentence
 
     # derives the lemma for each respective word and part of speech, and builds a space-separated sentence with them

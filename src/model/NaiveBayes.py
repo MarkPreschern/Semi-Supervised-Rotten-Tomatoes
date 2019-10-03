@@ -43,7 +43,7 @@ class NaiveBayes(Model.Model):
                     pWords *= self.OUT_OF_VOCAB_PROB
 
             prob = pClass * pWords
-            if prob == 0:
+            if prob <= 1.1754943508222875e-100:
                 probs.append(1.1754943508222875e-38)
             else:
                 probs.append(prob)
