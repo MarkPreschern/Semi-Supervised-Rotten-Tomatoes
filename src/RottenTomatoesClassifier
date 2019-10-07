@@ -177,7 +177,7 @@ class RottenTomatoesClassifier:
                             print(line)
                         else:
                             lemmaLine = Lemmatizer.Lemmatizer().lemmatizeSingleton(self.lemmatize, line)
-                            print(lemmaLine.lemmas + ":", end='')
+                            print(lemmaLine.lemmas + ": ", end='')
                             probs = self.model.classify(lemmaLine)
                             c = 0
                             while c < self.CLASSES:
@@ -186,6 +186,7 @@ class RottenTomatoesClassifier:
                             print()
                     elif line[:3] == "---":
                         onTestingData = True
+        print("Class 1: Negative, Class 2: Positive")
         f.close()
 
 
